@@ -1,0 +1,54 @@
+<app-spinner *ngIf="!loaded"></app-spinner>
+
+<div *ngIf="loaded" class="card">
+  <div class="card-header">
+    Person Details
+  </div>
+  <div class="card-body">
+    <table class="table table-borderless">
+      <tbody>
+      <tr>
+        <th scope="row">Name:</th>
+        <td>{{person.name}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Gender:</th>
+        <td>{{person.gender}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Birth Year:</th>
+        <td>{{person.birth_year}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Eye Color:</th>
+        <td>{{person.eye_color}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Hair Color:</th>
+        <td>{{person.hair_color}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Height:</th>
+        <td>{{person.height}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Mass:</th>
+        <td>{{person.mass}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Created:</th>
+        <td>{{person.created | date}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Edited:</th>
+        <td>{{person.edited | date}}</td>
+      </tr>
+      </tbody>
+    </table>
+
+    <a routerLink="/people" routerLinkActive="active" class="btn btn-primary">Go back to list</a>
+  </div>
+</div>
+
+
+

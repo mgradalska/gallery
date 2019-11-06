@@ -1,0 +1,17 @@
+<div class="card h-100">
+  <div class="card-body">
+    <h2 class="card-title">{{person.name}}</h2>
+    <p class="card-text">
+      Gender: {{person.gender}}
+    </p>
+    <p class="card-text">
+      Eye color: {{person.eye_color}}
+    </p>
+    <p class="card-text">
+      Height: {{person.height}}
+    </p>
+  </div>
+  <div class="card-footer">
+    <a [routerLink]="['/people/', getPersonId()]" class="btn btn-primary btn-sm">More Info</a>
+  </div>
+</div>
