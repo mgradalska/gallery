@@ -1,19 +1,21 @@
 <header class="jumbotron my-4">
   <h1 class="display-3">Gallery Application</h1>
   <p class="lead">Application created for browsing Star Wars people.</p>
-  <a routerLink="/people" routerLinkActive="active" class="btn btn-primary btn-lg">Show all</a>
+  <a routerLink="/people/page/1/" routerLinkActive="active" class="btn btn-primary btn-lg">Show all</a>
 </header>
 
 <div class="card text-white bg-secondary my-5 py-4 text-center">
   <div class="card-body">
-    <p class="text-white m-0">Something here</p>
+    <p class="text-white m-0">Sample characters:</p>
   </div>
 </div>
 
 <app-spinner *ngIf="!loaded"></app-spinner>
 
-<div class="row" *ngIf="loaded">
+<div class="row" *ngIf="loaded && !error">
   <div class="col-md-4 mb-5" *ngFor="let person of people">
     <app-person-snippet [person]="person"></app-person-snippet>
   </div>
 </div>
+
+<app-error-message *ngIf="error && loaded"></app-error-message>

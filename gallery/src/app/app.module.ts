@@ -11,6 +11,8 @@ import {PersonSnippetComponent} from './person-snippet/person-snippet.component'
 import {HttpClientModule} from '@angular/common/http';
 import { PersonDetailsComponent } from './person-details/person-details.component';
 import { SpinnerComponent } from './spinner/spinner.component';
+import { PaginatorComponent } from './paginator/paginator.component';
+import { ErrorMessageComponent } from './error-message/error-message.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { SpinnerComponent } from './spinner/spinner.component';
     PeopleListComponent,
     PersonSnippetComponent,
     PersonDetailsComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    PaginatorComponent,
+    ErrorMessageComponent
   ],
   imports: [
     BrowserModule,

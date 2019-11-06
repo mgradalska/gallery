@@ -7,7 +7,7 @@ import {PersonDetailsComponent} from './person-details/person-details.component'
 
 const routes: Routes = [
   {path: 'main', component: MainPageComponent},
-  {path: 'people', component: PeopleListComponent},
+  {path: 'people/page/:page', component: PeopleListComponent},
   {path: 'people/:id', component: PersonDetailsComponent},
   {
     path: '',

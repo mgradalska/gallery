@@ -1,11 +1,17 @@
 <app-spinner *ngIf="!loaded"></app-spinner>
 
-<div class="card-body" *ngIf="loaded">
-  <div class="row" *ngFor="let row of rows">
-    <div class="col-md-4 mb-5" *ngFor="let person of row">
-      <app-person-snippet [routerLink]="['/people/', person.id]" [person]="person"></app-person-snippet>
+<div *ngIf="loaded && !error">
+  <div class="card-body">
+    <div class="row" *ngFor="let row of rows">
+      <div class="col-md-4 mb-5" *ngFor="let person of row">
+        <app-person-snippet [routerLink]="['/people/', person.id]" [person]="person"></app-person-snippet>
+      </div>
     </div>
   </div>
+
+  <app-paginator [currentPage]="currentPage" [apiData]="apiData"></app-paginator>
 </div>
+
+<app-error-message *ngIf="error && loaded"></app-error-message>
 
 

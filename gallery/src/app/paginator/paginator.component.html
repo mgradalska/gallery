@@ -1,0 +1,13 @@
+<nav aria-label="Page navigation">
+  <ul class="pagination justify-content-center">
+    <li *ngIf="previousPage" class="page-item">
+      <a class="page-link" [routerLink]="['/people/page/', previousPage]">{{previousPage}}</a>
+    </li>
+    <li class="page-item">
+      <a class="page-link">{{currentPage}}</a>
+    </li>
+    <li *ngIf="nextPage" class="page-item">
+      <a class="page-link" [routerLink]="['/people/page/', nextPage]">{{nextPage}}</a>
+    </li>
+  </ul>
+</nav>

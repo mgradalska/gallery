@@ -9,15 +9,20 @@ import {Person} from './person';
 })
 export class PeopleService {
   apiUrl = 'https://swapi.co/api';
+  peopleUrl = `${this.apiUrl}/people`;
 
   constructor(private http: HttpClient) {
   }
 
   getAllPeople(): Observable<SwapiResponse> {
-    return this.http.get<SwapiResponse>(`${this.apiUrl}/people/`);
+    return this.http.get<SwapiResponse>(`${this.peopleUrl}`);
+  }
+
+  getAllPeopleForPage(page: string): Observable<SwapiResponse> {
+    return this.http.get<SwapiResponse>(`${this.peopleUrl}/?page=${page}`);
   }
 
   getPerson(id: string): Observable<Person> {
-    return this.http.get<Person>(`${this.apiUrl}/people/${id}`);
+    return this.http.get<Person>(`${this.peopleUrl}/${id}`);
   }
 }
