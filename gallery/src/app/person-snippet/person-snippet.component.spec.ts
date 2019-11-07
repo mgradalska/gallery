@@ -1,25 +1,24 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {PersonSnippetComponent} from './person-snippet.component';
+import {Person} from '../person';
+import {RouterTestingModule} from "@angular/router/testing";
 
 describe('PersonSnippetComponent', () => {
-  let component: PersonSnippetComponent;
-  let fixture: ComponentFixture<PersonSnippetComponent>;
+    let component: PersonSnippetComponent;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [PersonSnippetComponent]
-    })
-      .compileComponents();
-  }));
+    beforeEach(() => {
+      TestBed.configureTestingModule({
+        imports: [RouterTestingModule],
+        providers: [PersonSnippetComponent]
+      });
+      component = TestBed.get(PersonSnippetComponent);
+    });
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(PersonSnippetComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+    it('#getPersonId should return id part from string', () => {
+        const mockString = 'test/test/id/';
+        component.person = {url: mockString} as Person;
+        const returnedId = component.getPersonId();
+        expect(returnedId).toEqual('id');
+    });
 });

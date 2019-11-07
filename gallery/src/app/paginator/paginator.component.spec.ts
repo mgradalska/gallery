@@ -1,25 +1,26 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 
-import { PaginatorComponent } from './paginator.component';
+import {PaginatorComponent} from './paginator.component';
 
 describe('PaginatorComponent', () => {
-  let component: PaginatorComponent;
-  let fixture: ComponentFixture<PaginatorComponent>;
+    let component: PaginatorComponent;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ PaginatorComponent ]
-    })
-    .compileComponents();
-  }));
+    beforeEach(() => {
+        TestBed.configureTestingModule({
+            providers: [PaginatorComponent]
+        });
+        component = TestBed.get(PaginatorComponent);
+    });
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(PaginatorComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    it('#getPageFromApiLink should fetch proper page', () => {
+        const mockApiLink = 'test?=1';
+        const returnedPage = component.getPageFromApiLink(mockApiLink);
+        expect(returnedPage).toEqual('1');
+    });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+    it('#getPageFromApiLink should fetch null page', () => {
+        const mockApiLink = null;
+        const returnedPage = component.getPageFromApiLink(mockApiLink);
+        expect(returnedPage).toEqual(null);
+    });
 });
