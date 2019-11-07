@@ -4,5 +4,5 @@ export interface SwapiResponse {
   count: number;
   next: string;
   previous: string;
-  results: Person[];
+  results: Array<Person>;
 }

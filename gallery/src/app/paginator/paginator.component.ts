@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {SwapiResponse} from '../swapi-response';
+import {SwapiResponse} from '../models/swapi-response';
 
 @Component({
   selector: 'app-paginator',

@@ -13,6 +13,9 @@ import { PersonDetailsComponent } from './person-details/person-details.componen
 import { SpinnerComponent } from './spinner/spinner.component';
 import { PaginatorComponent } from './paginator/paginator.component';
 import { ErrorMessageComponent } from './error-message/error-message.component';
+import { PeopleSearchPipe } from './pipes/people-search.pipe';
+import { PeopleSearchComponent } from './people-search/people-search.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -25,12 +28,15 @@ import { ErrorMessageComponent } from './error-message/error-message.component';
     PersonDetailsComponent,
     SpinnerComponent,
     PaginatorComponent,
-    ErrorMessageComponent
+    ErrorMessageComponent,
+    PeopleSearchPipe,
+    PeopleSearchComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,33 +1,43 @@
 import {Component, OnInit} from '@angular/core';
-import {PeopleService} from '../people.service';
-import {Person} from '../person';
-import {ActivatedRoute, Router} from '@angular/router';
-import {SwapiResponse} from '../swapi-response';
+import {PeopleService} from '../services/people.service';
+import {Person} from '../models/person';
+import {ActivatedRoute} from '@angular/router';
+import {SwapiResponse} from '../models/swapi-response';
+import {SplitService} from '../services/split.service';
 
 @Component({
   selector: 'app-people-list',
   templateUrl: './people-list.component.html'
 })
 export class PeopleListComponent implements OnInit {
+  searchString: string;
   apiData: SwapiResponse;
-  people: Person[];
-  rows = [];
+  people: Array<Person>;
+  rows = Array<Array<Person>>();
   error: boolean;
   loaded: boolean;
   currentPage: string;
 
-  constructor(private peopleService: PeopleService, private route: ActivatedRoute, private router: Router) {
+  constructor(
+    private peopleService: PeopleService,
+    private route: ActivatedRoute,
+    private splitService: SplitService) {
   }
 
-  ngOnInit() {
-    this.route.params.subscribe(params => {
+  ngOnInit(): void {
+    this.route.params.subscribe(() => {
         this.currentPage = this.getCurrentPage();
         this.getPeopleForCurrentPage();
       }
     );
   }
 
-  setInitialValues() {
+  updateSearchString(newSearchString: string): void {
+    this.searchString = newSearchString;
+  }
+
+  setInitialValues(): void {
+    this.searchString = null;
     this.rows = [];
     this.loaded = false;
   }
@@ -36,7 +46,7 @@ export class PeopleListComponent implements OnInit {
     return this.route.snapshot.paramMap.get('page');
   }
 
-  getPeopleForCurrentPage() {
+  getPeopleForCurrentPage(): void {
     this.setInitialValues();
     this.peopleService.getAllPeopleForPage(this.currentPage).subscribe(
       data => {
@@ -45,14 +55,8 @@ export class PeopleListComponent implements OnInit {
       },
       () => this.error = true,
       () => {
-        this.splitPeopleToRows();
+        this.rows = this.splitService.splitPeopleToRows(this.people);
         this.loaded = true;
       });
-  }
-
-  splitPeopleToRows() {
-    while (this.people.length) {
-      this.rows.push(this.people.splice(0, 3));
-    }
   }
 }

@@ -1,13 +1,13 @@
 import {Component, OnInit} from '@angular/core';
-import {PeopleService} from '../people.service';
-import {Person} from '../person';
+import {PeopleService} from '../services/people.service';
+import {Person} from '../models/person';
 
 @Component({
   selector: 'app-main-page',
   templateUrl: './main-page.component.html'
 })
 export class MainPageComponent implements OnInit {
-  people: Person[];
+  people: Array<Person>;
   loaded: boolean;
   error: boolean;
 

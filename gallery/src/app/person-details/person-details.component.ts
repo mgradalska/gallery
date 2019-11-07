@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {PeopleService} from '../people.service';
-import {Person} from '../person';
+import {PeopleService} from '../services/people.service';
+import {Person} from '../models/person';
 
 @Component({
   selector: 'app-person-details',

@@ -1,7 +1,7 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {PersonSnippetComponent} from './person-snippet.component';
-import {Person} from '../person';
+import {Person} from '../models/person';
 import {RouterTestingModule} from "@angular/router/testing";
 
 describe('PersonSnippetComponent', () => {

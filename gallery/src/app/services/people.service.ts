@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {SwapiResponse} from './swapi-response';
-import {Person} from './person';
+import {SwapiResponse} from '../models/swapi-response';
+import {Person} from '../models/person';
 
 @Injectable({
   providedIn: 'root'
